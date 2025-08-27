@@ -4,7 +4,7 @@
                         <p>2025 &copy; Record Center Fikom Unpad</p>
                     </div>
                     <div class="float-end">
-                        <p>Crafted by <a href="#">Skye Software Enginering</a></p>
+                        <p>Crafted by <a href="https://skyedigipreneur.sch.id" target="_blank">Skye Digipreneur School</a></p>
                     </div>
                 </div>
             </footer>

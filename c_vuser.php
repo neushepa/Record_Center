@@ -32,21 +32,31 @@
                          </tr>
                      </thead>
                      <tbody>
-                            <?php foreach ($data as $row) : ?>
-                                <tr>
-                                    <td><?php echo $row['nip']; ?></td>
-                                    <td><?php echo $row['nama_lengkap']; ?></td>
-                                    <td><?php echo $row['jabatan']; ?></td>
-                                    <td><?php echo $row['hak_akses']; ?></td>
-                                    <td>
-                                        <a href="p_edituser.php?nip=<?php echo $row['nip']; ?>" class="btn btn-sm btn-primary">Edit</a>
-                                        <a href="s_deleteuser.php?nip=<?php echo $row['nip']; ?>" class="btn btn-sm btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus pengguna ini?')">Delete</a>
-                                    </td>
-                                </tr>
-                            <?php endforeach; ?>
+                         <?php foreach ($data as $row) : ?>
+                             <tr>
+                                 <td><?php echo $row['nip']; ?></td>
+                                 <td><?php echo $row['nama_lengkap']; ?></td>
+                                 <td><?php echo $row['jabatan']; ?></td>
+                                 <td><?php echo $row['hak_akses']; ?></td>
+                                 <td style="display: flex; gap: 5px;">
+                                     <a href="p_euser.php?nip=<?= $row['nip']; ?>" class="btn btn-sm btn-primary">Edit</a>
+                                     <form action="config/global_function.php?action=delete&table=rc_user" method="post" onsubmit="return confirm('Apakah Anda yakin ingin menghapus <?php echo $row['nama_lengkap']; ?> ?')" style="display: inline;">
+                                         <input type="hidden" name="nip" value="<?= $row['nip']; ?>">
+                                         <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                     </form>
+                                     <a href="s_userReset.php?nip=<?= $row['nip']; ?>"
+                                         class="btn btn-sm btn-warning"
+                                         onclick="return confirm('Yakin ingin reset password untuk NIP <?= $row['nip']; ?>?')">
+                                         Reset Password
+                                     </a>
+                                 </td>
+
+                             </tr>
+                         <?php endforeach; ?>
                      </tbody>
                  </table>
              </div>
          </div>
      </section>
  </div>
+

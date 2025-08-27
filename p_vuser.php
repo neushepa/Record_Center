@@ -11,6 +11,7 @@ if ($_SESSION['status'] != "login") {
 
 $data = getData('rc_user');
 $nomor = 0;
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -54,11 +55,24 @@ $nomor = 0;
             <?php include './layout/footer.php'; ?>
         </div>
     </div>
+    <div class="modal fade" id="notifModal" tabindex="-1" aria-labelledby="notifLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-info text-white">
+                    <h5 class="modal-title" id="notifLabel">Notifikasi</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body" id="notifMessage"></div>
+            </div>
+        </div>
+    </div>
     <script src="assets/static/js/components/dark.js"></script>
     <script src="assets/extensions/perfect-scrollbar/perfect-scrollbar.min.js"></script>
     <script src="assets/compiled/js/app.js"></script>
     <script src="assets/extensions/simple-datatables/umd/simple-datatables.js"></script>
     <script src="assets/static/js/pages/simple-datatables.js"></script>
+
+
 </body>
 
 </html>

@@ -22,22 +22,17 @@ function login($nip, $password){
 }
 
 
-function register($username, $password, $email, $namaLengkap, $alamat)
-{
-    global $conn;
-    if (empty($username) || empty($password) || empty($email) || empty($namaLengkap) || empty($alamat)) {
-        return false;
-    }
-    $sql = mysqli_query($conn, "SELECT * FROM rc_user WHERE username='$username'");
-    if (mysqli_num_rows($sql) > 0) {
-        return false;
-    }
-    $pass = md5($password);
-    $query = "INSERT INTO user (username, password, email, namaLengkap, alamat) VALUES ('$username', '$pass','$email', '$namaLengkap','$alamat')";
-    if (mysqli_query($conn, $query)) {
-        return true;
-    } else {
-        return false;
-    }
+function resetPassword($nip){
+    global $conn; 
+        $unip = $nip;     
+        $sql = "UPDATE `rc_user` SET `password` = md5('$unip') WHERE `nip` = '$unip'";
+        mysqli_query($conn, $sql);
+        if ($sql) {
+            return true;        
+        }
+        else {
+            return false;
+        }
 }
+
 ?>

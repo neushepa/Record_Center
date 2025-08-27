@@ -1,9 +1,13 @@
 <?php
-	session_start();
-	$getURL=$_SERVER['REQUEST_URI'];
-	if ($_SESSION['status']!="login") {
-		header("location:auth.php");
-	}
+session_start();
+$getURL = $_SERVER['REQUEST_URI'];
+if ($_SESSION['status'] != "login") {
+	header("location:auth.php");
+}
+require_once('./config/connection.php');
+require_once('./config/global_function.php');
+
+date_default_timezone_set('Asia/Jakarta');
 ?>
 
 <!DOCTYPE html>
@@ -12,7 +16,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dashboard Record Center</title>
+    <title>Input Klasifikasi Baru</title>
     <link
         rel="shortcut icon"
         href="./assets/compiled/svg/favicon.svg"
@@ -23,7 +27,7 @@
         type="image/png" />
     <link rel="stylesheet" href="./assets/compiled/css/app.css" />
     <link rel="stylesheet" href="./assets/compiled/css/app-dark.css" />
-    <link rel="stylesheet" href="./assets/style.css" />
+        <link rel="stylesheet" href="./assets/style.css" />
 </head>
 
 <body>
@@ -32,7 +36,7 @@
         <div id="sidebar">
             <div class="sidebar-wrapper active">
                 <?php
-                include './layout/sidebar.php';
+                    include './layout/sidebar.php';
                 ?>
             </div>
         </div>
@@ -40,7 +44,7 @@
             <header>
                 <?php include './layout/header-top.php'; ?>
             </header>
-            <?php include './c_dashboard.php'; ?>
+            <?php include './c_vnklasifikasi.php'; ?>
             <?php include './layout/footer.php'; ?>
         </div>
     </div>
